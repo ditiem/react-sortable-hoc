@@ -10,6 +10,7 @@ export const propTypes = {
   disableAutoscroll: PropTypes.bool,
   distance: PropTypes.number,
   getContainer: PropTypes.func,
+  getHelper: PropTypes.func,
   getHelperDimensions: PropTypes.func,
   helperClass: PropTypes.string,
   helperContainer: PropTypes.oneOfType([

@@ -623,6 +623,35 @@ storiesOf('General | Configuration / Options', module)
         />
       </div>
     );
+  })
+  .add('Custom sortable helper', () => {
+    const items = getItems(50, 59),
+      helper = ({container, node}) => {
+        const div = document.createElement('DIV'),
+          text = document.createElement('DIV');
+
+        text.innerText = 'This is a custom helper';
+        text.style.backgroundColor = '#00f';
+        text.style.color = '#fff';
+        text.style.padding = '15px';
+        text.style.textAlign = 'center';
+
+        div.appendChild(node.cloneNode(true));
+        div.appendChild(text);
+        div.appendChild(node.cloneNode(true));
+
+        return container.appendChild(div);
+      };
+    return (
+      <div className={style.root}>
+        <ListWrapper
+          component={SortableListWithCustomContainer}
+          items={items}
+          helperClass={style.stylizedHelper}
+          getHelper={helper}
+        />
+      </div>
+    );
   });
 
 storiesOf('General | Configuration / Customization', module)

@@ -4,6 +4,13 @@ export type Axis = 'x' | 'y' | 'xy';
 
 export type Offset = number | string;
 
+export interface HelperArgs {
+  node: Element;
+  index: number;
+  collection: Offset;
+  container: Element;
+}
+
 export interface SortStart {
   node: Element;
   index: number;
@@ -77,6 +84,7 @@ export interface SortableContainerProps {
   getContainer?: ContainerGetter;
   getHelperDimensions?: (sort: SortStart) => Dimensions;
   helperContainer?: HTMLElement | HelperContainerGetter;
+  getHelper?: (args: HelperArgs) => HTMLElement;
 }
 
 export interface SortableElementProps {

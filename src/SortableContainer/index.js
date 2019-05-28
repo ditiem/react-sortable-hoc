@@ -227,6 +227,7 @@ export default function sortableContainer(
       if (active) {
         const {
           axis,
+          getHelper,
           getHelperDimensions,
           helperClass,
           hideSortableGhost,
@@ -296,7 +297,10 @@ export default function sortableContainer(
           top: window.pageYOffset,
         };
 
-        this.helper = this.helperContainer.appendChild(cloneNode(node));
+        const container = this.helperContainer;
+        this.helper = getHelper
+          ? getHelper({container, collection, index, node})
+          : container.appendChild(cloneNode(node));
 
         setInlineStyles(this.helper, {
           boxSizing: 'border-box',
